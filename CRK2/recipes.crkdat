@@ -1,0 +1,68 @@
+Axe: Wood/2
+Pickaxe: Wood/3, Sugar/3
+Saw: Wood/6, Sugar/5
+Shovel: Wood/10, Sugar/10
+Pile: Wood/15, Sugar/15
+Tongs: Wood/22, Sugar/18
+SugarHammer: Wood/30, Sugar/35
+
+JellybeanJam: Jellybean/3
+SweetberryJam: Jellybean/6
+DalgonaJam: Jellybean/6, Jellyberry/1
+PomegranateJam: CottonCandy/1, JellybeanLatte/1
+PopberryJam: Jellybean/20, CottonCandy/3
+
+PineconeDoll: Wood/6
+AcornLamp: Wood/12, Jellyberry/3
+CuckooClock: BiscuitPowder/8, DalgonaJam/3
+Dreamcatcher: CottonCandy/1, FluffyOmurice/1
+
+RyeBread: JellybeanJam/1, BiscuitPowder/2
+Jampie: Jellybean/6, BiscuitPowder/3
+Focaccia: BiscuitPowder/6, AcornLamp/1
+Donut: BiscuitPowder/5, GlassPlate/1
+Castella: Sugar/20, Milk/8
+Croissant: Milk/8, Butter/1
+
+JellyStew: Jellybean/5, Jellyberry/1
+JellyBugger: Jellybean/10, Jampie/1
+CandyCreamPasta: BiscuitPowder/7, Cream/1
+FluffyOmurice: Jellyberry/6, Focaccia/1
+PizzaJelly: Jellyberry/8, CandyFlower/4
+JellybeanMeal: Jellybean/25, FlowerBasket/3
+
+Flowerpot: PineconeDoll/2, BiscuitPowder/4
+GlassPlate: Sugar/12, JellyStew/1
+Marble: JellyBugger/1, CottonCandy/1
+DessertBowl: Sugar/24, PomegranateJam/2
+
+CandyFlower: Jellyberry/2, Flowerpot/1
+HappyFlower: Jellyberry/4, Sugar/10
+CandyBouquet: Jellyberry/5, CandyCreamPasta/1
+FlowerBasket: Jellybean/18, RyeBread/3
+GlassBouquet: Jellybean/20, CandyCushion/2
+YogurtWreath: Jellybean/30, PizzaJelly/2
+
+Cream: SweetberryJam/1, Milk/2
+Butter: Sugar/15, Milk/5
+HandyCheese: Milk/10, CuckooClock/1
+
+JellybeanLatte: Jellybean/12, Milk/2
+BubbleTea: CottonCandy/1, Donut/1
+SweetberryAde: Jellyberry/10, Marble/2
+
+CandyCushion: BiscuitPowder/8, CottonCandy/1
+BearCottonDoll: CandyBouquet/2, CottonCandy/1
+DragonDoll: CottonCandy/2, CreamRootBeer/2
+
+CreamRootBeer: BiscuitPowder/10, HappyFlower/1
+RedberryJuice: Jellyberry/12, BearCottonDoll/1
+Wildbottle: Wood/50, Muffin/2
+
+Muffin: BiscuitPowder/12, Milk/7
+StrawberryCake: BiscuitPowder/14, BubbleTea/2
+ChiffonCake: BiscuitPowder/18, HandyCheese/2
+
+GlazedRing: BiscuitPowder/12, Castella/1
+Brooch: Jellyberry/16, Dreamcatcher/1
+JellyCrown: CottonCandy/3, GlassBouquet/1

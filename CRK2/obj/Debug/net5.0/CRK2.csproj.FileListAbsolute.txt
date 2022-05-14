@@ -1,0 +1,16 @@
+C:\Programming\Csharp\CRK2\bin\Debug\net5.0\CRK2.exe
+C:\Programming\Csharp\CRK2\bin\Debug\net5.0\CRK2.deps.json
+C:\Programming\Csharp\CRK2\bin\Debug\net5.0\CRK2.runtimeconfig.json
+C:\Programming\Csharp\CRK2\bin\Debug\net5.0\CRK2.runtimeconfig.dev.json
+C:\Programming\Csharp\CRK2\bin\Debug\net5.0\CRK2.dll
+C:\Programming\Csharp\CRK2\bin\Debug\net5.0\ref\CRK2.dll
+C:\Programming\Csharp\CRK2\bin\Debug\net5.0\CRK2.pdb
+C:\Programming\Csharp\CRK2\obj\Debug\net5.0\CRK2.csproj.AssemblyReference.cache
+C:\Programming\Csharp\CRK2\obj\Debug\net5.0\CRK2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Programming\Csharp\CRK2\obj\Debug\net5.0\CRK2.AssemblyInfoInputs.cache
+C:\Programming\Csharp\CRK2\obj\Debug\net5.0\CRK2.AssemblyInfo.cs
+C:\Programming\Csharp\CRK2\obj\Debug\net5.0\CRK2.csproj.CoreCompileInputs.cache
+C:\Programming\Csharp\CRK2\obj\Debug\net5.0\CRK2.dll
+C:\Programming\Csharp\CRK2\obj\Debug\net5.0\ref\CRK2.dll
+C:\Programming\Csharp\CRK2\obj\Debug\net5.0\CRK2.pdb
+C:\Programming\Csharp\CRK2\obj\Debug\net5.0\CRK2.genruntimeconfig.cache

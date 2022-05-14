@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\kycte\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\kycte\\.nuget\\packages"
+    ]
+  }
+}
