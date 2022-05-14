@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Programming\\Csharp\\CRK2\\CRK2.csproj": {}
+    "C:\\Users\\kycte\\Desktop\\Programming\\CSharp\\CrkLibrary\\CRK2\\CRK2.csproj": {}
   },
   "projects": {
-    "C:\\Programming\\Csharp\\CRK2\\CRK2.csproj": {
+    "C:\\Users\\kycte\\Desktop\\Programming\\CSharp\\CrkLibrary\\CRK2\\CRK2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Programming\\Csharp\\CRK2\\CRK2.csproj",
+        "projectUniqueName": "C:\\Users\\kycte\\Desktop\\Programming\\CSharp\\CrkLibrary\\CRK2\\CRK2.csproj",
         "projectName": "CRK2",
-        "projectPath": "C:\\Programming\\Csharp\\CRK2\\CRK2.csproj",
+        "projectPath": "C:\\Users\\kycte\\Desktop\\Programming\\CSharp\\CrkLibrary\\CRK2\\CRK2.csproj",
         "packagesPath": "C:\\Users\\kycte\\.nuget\\packages\\",
-        "outputPath": "C:\\Programming\\Csharp\\CRK2\\obj\\",
+        "outputPath": "C:\\Users\\kycte\\Desktop\\Programming\\CSharp\\CrkLibrary\\CRK2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kycte\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\kycte\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -54,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
