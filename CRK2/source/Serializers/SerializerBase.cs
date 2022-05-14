@@ -7,10 +7,6 @@ namespace CRK2
 {
     public abstract class SerializerBase
     {
-        public abstract bool Start();
-        
-        protected abstract StringBuilder LoadFile(string path);
-
         protected byte[] GetHash(StringBuilder fileContents)
         {
             SHA256 hashCreator;
@@ -76,6 +72,16 @@ namespace CRK2
                 if(hash1[i] != hash2[i]) return false;
 
             return true;
+        }
+
+        protected StringBuilder RemoveWhiteSpace(StringBuilder contents)
+        {
+            contents.Replace(" ", "");
+            contents.Replace("\t", "");
+            contents.Replace("\r", "");
+            contents.Replace("\n", "");
+
+            return contents;
         }
     }
 }

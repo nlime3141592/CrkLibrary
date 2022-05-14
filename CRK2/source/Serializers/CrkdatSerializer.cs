@@ -8,52 +8,63 @@ namespace CRK2
 {
     public class CrkdatSerializer : SerializerBase
     {
-        private static readonly string c_CRKDAT_FILE_PATH = MainClass.ProgramPath + "/dats/recipes.crkdat";
-        private static readonly string c_HASH_FILE_PATH = MainClass.ProgramPath + "/dats/crkdat.HASH";
+        public static readonly string c_CRKDAT_FILE_PATH = MainClass.ProgramPath + "/dats/programDatas/recipes.crkdat";
+        public static readonly string c_HASH_FILE_PATH = MainClass.ProgramPath + "/dats/hashes/crkdat.HASH";
 
-        public Item?[]? items => m_items;
+        private StringBuilder m_fileContents;
 
-        private StringBuilder? m_fileContents;
-        private byte[]? m_crkdat_hash;
-        private byte[]? m_verification_hash;
-        private Item?[]? m_items;
-
-        public override bool Start()
+        public CrkdatSerializer()
         {
-            string[] lines;
-            int i;
+            m_fileContents = LoadFile(c_CRKDAT_FILE_PATH);
+        }
+
+        public bool CheckHash()
+        {
+            byte[] crkdat_hash;
+            byte[] verification_hash;
             bool verification;
 
-            // 파일 로드
-            m_fileContents = LoadFile(c_CRKDAT_FILE_PATH);
-
-            // 해시 검증
-            m_crkdat_hash = base.GetHash(m_fileContents);
-            m_verification_hash = base.LoadHashFile(c_HASH_FILE_PATH);
-            verification = VerificateHash(m_crkdat_hash, m_verification_hash);
+            crkdat_hash = base.GetHash(m_fileContents);
+            verification_hash = base.LoadHashFile(c_HASH_FILE_PATH);
+            verification = VerificateHash(crkdat_hash, verification_hash);
 
             if(!verification)
             {
-                Console.WriteLine("Crkdat 해시 검증 실패");
-                SaveHash(c_HASH_FILE_PATH, m_crkdat_hash);
-
-                // Deserialize
-                lines = m_fileContents.ToString().Split(';', StringSplitOptions.RemoveEmptyEntries);
-                m_items = new Item[lines.Length];
-
-                for(i = 0; i < lines.Length; i++)
-                    m_items[i] = CrkdatSerializer.Deserialize(lines[i]);
-
-                return false;
+                SaveHash(c_HASH_FILE_PATH, crkdat_hash);
             }
-            else
-            {
-                Console.WriteLine("Crkdat 해시 검증 성공");
-                return true;
-            }
+
+            return verification;
         }
 
-        protected override StringBuilder LoadFile(string path)
+        public Item?[] ToItems()
+        {
+            Item? item;
+            Item?[] items;
+            string[] lines;
+            int n, m;
+            int i;
+            int itemType;
+
+            lines = m_fileContents.ToString().Split(';', StringSplitOptions.RemoveEmptyEntries);
+            n = CrkManager.itemTypeTable.itemCount;
+            m = lines.Length;
+            items = new Item[n];
+
+            for(i = 0; i < m; i++)
+            {
+                item = CrkdatSerializer.Deserialize(lines[i]);
+
+                if(item == null) throw new NullReferenceException("문법 오류");
+                itemType = item.itemType;
+                if(items[itemType] != null) throw new Exception("아이템의 레시피 중복");
+
+                items[itemType] = item;
+            }
+
+            return items;
+        }
+
+        public StringBuilder LoadFile(string path)
         {
             StringBuilder fileContents;
             StringBuilder lineContents;
@@ -72,21 +83,41 @@ namespace CRK2
                     RemoveWhiteSpace(lineContents);
 
                     fileContents.Append(lineContents);
-                    fileContents.Append(";");
+                    fileContents.Append(';');
                 }
             }
 
             return fileContents;
         }
 
-        private StringBuilder RemoveWhiteSpace(StringBuilder contents)
+        public bool SaveFile(string path, Item?[]? items)
         {
-            contents.Replace(" ", "");
-            contents.Replace("\t", "");
-            contents.Replace("\r", "");
-            contents.Replace("\n", "");
+            if(items == null)
+                return false;
 
-            return contents;
+            try
+            {
+                using(FileStream ostream = new FileStream(path, FileMode.Create))
+                using(StreamWriter writer = new StreamWriter(ostream))
+                {
+                    int n, i;
+                    n = items.Length;
+
+                    for(i = 0; i < n; i++)
+                    {
+                        if(items[i] != null)
+                        {
+                            writer.WriteLine(CrkdatSerializer.Serialize(items[i]));
+                        }
+                    }
+                }
+
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
         }
 
         public static string Serialize(Item item)
@@ -100,19 +131,19 @@ namespace CRK2
 
             lineContents = new StringBuilder();
 
-            itemType = CrkManager.itemTypeMaker[item.itemType];
+            itemType = CrkManager.itemTypeTable[item.itemType];
             lineContents.AppendFormat("{0}:", itemType);
 
             n = item.recipes.Length;
 
-            recipeItemType = CrkManager.itemTypeMaker[item.recipes[0].itemType];
+            recipeItemType = CrkManager.itemTypeTable[item.recipes[0].itemType];
             count = item.recipes[0].count;
 
             lineContents.AppendFormat(" {0}/{1}", recipeItemType, count);
 
             for(i = 0; i < n; i++)
             {
-                recipeItemType = CrkManager.itemTypeMaker[item.recipes[i].itemType];
+                recipeItemType = CrkManager.itemTypeTable[item.recipes[i].itemType];
                 count = item.recipes[i].count;
 
                 if(i != 0)
@@ -139,22 +170,25 @@ namespace CRK2
 
                 item = new Item();
 
+                // ItemType
                 split_type = crkdatLine.Split(':', StringSplitOptions.RemoveEmptyEntries);
                 if(split_type.Length != 2) throw new Exception("문법 오류");
-                itemType = CrkManager.itemTypeMaker[split_type[0]];
+                itemType = CrkManager.itemTypeTable[split_type[0]];
                 item.itemType = itemType;
 
                 split_recipes = split_type[1].Split(',', StringSplitOptions.RemoveEmptyEntries);
                 item.recipes = new Recipe[split_recipes.Length];
 
+                // Recipes
                 for(i = 0; i < split_recipes.Length; i++)
                 {
                     split_recipeData = split_recipes[i].Split('/', StringSplitOptions.RemoveEmptyEntries);
 
                     if(split_recipeData.Length != 2) throw new Exception("문법 오류");
 
+                    // 1 Recipe
                     item.recipes[i] = new Recipe();
-                    item.recipes[i].itemType = CrkManager.itemTypeMaker[split_recipeData[0]];
+                    item.recipes[i].itemType = CrkManager.itemTypeTable[split_recipeData[0]];
                     item.recipes[i].count = int.Parse(split_recipeData[1]);
                 }
 

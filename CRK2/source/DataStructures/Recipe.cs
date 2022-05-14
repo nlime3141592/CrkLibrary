@@ -9,7 +9,7 @@ namespace CRK2
 
         public override string ToString()
         {
-            return string.Format("{0}: {1}", CrkManager.itemTypeMaker[itemType], count);
+            return string.Format("{0}: {1}", CrkManager.itemTypeTable[itemType], count);
         }
     }
 }

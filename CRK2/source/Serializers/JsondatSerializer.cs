@@ -9,51 +9,63 @@ namespace CRK2
 {
     public class JsondatSerializer : SerializerBase
     {
-        private static readonly string c_JSONDAT_FILE_PATH = MainClass.ProgramPath + "/dats/recipes.jsondat";
-        private static readonly string c_HASH_FILE_PATH = MainClass.ProgramPath + "/dats/jsondat.HASH";
+        public static readonly string c_JSONDAT_FILE_PATH = MainClass.ProgramPath + "/dats/programDatas/recipes.jsondat";
+        public static readonly string c_HASH_FILE_PATH = MainClass.ProgramPath + "/dats/hashes/jsondat.HASH";
 
-        public Item?[]? items => m_items;
+        private StringBuilder m_fileContents;
 
-        private StringBuilder? m_fileContents;
-        private byte[]? m_jsondat_hash;
-        private byte[]? m_verification_hash;
-        private Item?[]? m_items;
-
-        public override bool Start()
+        public JsondatSerializer()
         {
-            string[] lines;
-            int i;
+            m_fileContents = LoadFile(c_JSONDAT_FILE_PATH);
+        }
+
+        public bool CheckHash()
+        {
+            byte[] jsondat_hash;
+            byte[] verification_hash;
             bool verification;
 
-            // 파일 로드
-            m_fileContents = LoadFile(c_JSONDAT_FILE_PATH);
-
-            // 해시 검증
-            m_jsondat_hash = base.GetHash(m_fileContents);
-            m_verification_hash = base.LoadHashFile(c_HASH_FILE_PATH);
-            verification = VerificateHash(m_jsondat_hash, m_verification_hash);
+            jsondat_hash = base.GetHash(m_fileContents);
+            verification_hash = base.LoadHashFile(c_HASH_FILE_PATH);
+            verification = VerificateHash(jsondat_hash, verification_hash);
 
             if(!verification)
             {
-                Console.WriteLine("Jsondat 해시 검증 실패");
-                SaveHash(c_HASH_FILE_PATH, m_jsondat_hash);
-            }
-            else
-            {
-                Console.WriteLine("Jsondat 해시 검증 성공");
+                SaveHash(c_HASH_FILE_PATH, jsondat_hash);
             }
 
-            // Deserialize
-            lines = m_fileContents.ToString().Split(';', StringSplitOptions.RemoveEmptyEntries);
-            m_items = new Item[lines.Length];
-
-            for(i = 0; i < lines.Length; i++)
-                m_items[i] = JsondatSerializer.Deserialize(lines[i]);
-
-            return true;
+            return verification;
         }
 
-        protected override StringBuilder LoadFile(string path)
+        public Item?[] ToItems()
+        {
+            Item? item;
+            Item?[] items;
+            string[] lines;
+            int n, m;
+            int i;
+            int itemType;
+
+            lines = m_fileContents.ToString().Split(';', StringSplitOptions.RemoveEmptyEntries);
+            n = CrkManager.itemTypeTable.itemCount;
+            m = lines.Length;
+            items = new Item[n];
+
+            for(i = 0; i < m; i++)
+            {
+                item = JsondatSerializer.Deserialize(lines[i]);
+
+                if(item == null) throw new NullReferenceException("문법 오류");
+                itemType = item.itemType;
+                if(items[itemType] != null) throw new Exception("아이템의 레시피 중복");
+
+                items[itemType] = item;
+            }
+
+            return items;
+        }
+
+        public StringBuilder LoadFile(string path)
         {
             StringBuilder fileContents;
             StringBuilder lineContents;
@@ -72,21 +84,41 @@ namespace CRK2
                     RemoveWhiteSpace(lineContents);
 
                     fileContents.Append(lineContents);
-                    fileContents.Append(";");
+                    fileContents.Append(';');
                 }
             }
 
             return fileContents;
         }
 
-        private StringBuilder RemoveWhiteSpace(StringBuilder contents)
+        public bool SaveFile(string path, Item?[]? items)
         {
-            contents.Replace(" ", "");
-            contents.Replace("\t", "");
-            contents.Replace("\r", "");
-            contents.Replace("\n", "");
+            if(items == null)
+                return false;
 
-            return contents;
+            try
+            {
+                using(FileStream ostream = new FileStream(path, FileMode.Create))
+                using(StreamWriter writer = new StreamWriter(ostream))
+                {
+                    int n, i;
+                    n = items.Length;
+
+                    for(i = 0; i < n; i++)
+                    {
+                        if(items[i] != null)
+                        {
+                            writer.WriteLine(JsondatSerializer.Serialize(items[i]));
+                        }
+                    }
+                }
+
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
         }
 
         public static string Serialize(Item item)

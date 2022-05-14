@@ -16,7 +16,7 @@ namespace CRK2
 
             contents = new StringBuilder();
 
-            contents.AppendFormat("Item: {0}\n", CrkManager.itemTypeMaker[itemType]);
+            contents.AppendFormat("Item: {0}\n", CrkManager.itemTypeTable[itemType]);
             contents.AppendFormat("  Recipes:\n");
 
             n = recipes.Length;
