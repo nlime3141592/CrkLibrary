@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace CRK2
 {
@@ -40,31 +41,46 @@ namespace CRK2
             string key;
 
             m_dict = new Dictionary<string, int>();
-            n = CrkManager.itemTypeTable.itemCount;
+            n = CrkManager.itemTypeConverter.ItemCount;
 
             for(i = 0; i < n; i++)
             {
-                key = CrkManager.itemTypeTable[i];
+                key = CrkManager.itemTypeConverter.GetItemTypeString(i);
                 m_dict.Add(key, 0);
             }
         }
 
-        public int[] ToArray()
+        public bool isValidTable()
         {
-            int n;
-            int[] arr;
-            int idx;
+            foreach(int value in m_dict.Values)
+            {
+                if(value < 0)
+                    return false;
+            }
+            
+            return true;
+        }
 
-            n = CrkManager.itemTypeTable.itemCount;
-            arr = new int[n];
+        public override string ToString()
+        {
+            StringBuilder output = new StringBuilder();
+
+            output.Append("Table:\n");
 
             foreach(string str in m_dict.Keys)
             {
-                idx = CrkManager.itemTypeTable[str];
-                arr[idx] = m_dict[str];
+                if(m_dict[str] > 0)
+                {
+                    string viewName = CrkManager.itemTypeConverter.GetItemTypeViewName(str);
+                    int count = m_dict[str];
+
+                    output.AppendFormat("  {0}: {1}개\n", viewName, count);
+                }
             }
 
-            return arr;
+            output.Remove(output.Length - 1, 1);
+
+            return output.ToString();
         }
     }
 }

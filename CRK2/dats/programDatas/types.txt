@@ -1,77 +1,77 @@
 
-Wood
-Jellybean
-Sugar
-BiscuitPowder
-Jellyberry
-Milk
-CottonCandy
+Wood : 롤케이크-나무조각
+Jellybean: 젤리빈
+Sugar: 각설탕-조각
+BiscuitPowder: 비스킷-가루
+Jellyberry: 젤리베리
+Milk: 밀키-우유
+CottonCandy: 솜사탕-양털
 
-Axe
-Pickaxe
-Saw
-Shovel
-Pile
-Tongs
-SugarHammer
+Axe: 단단-도끼
+Pickaxe: 튼튼-곡괭이
+Saw: 슥삭슥삭-톱
+Shovel: 푹푹-삽
+Pile: 신비한-프레첼-말뚝
+Tongs: 영롱한-푸른사탕-집게
+SugarHammer: 불변의-슈가-코팅-망치
 
-JellybeanJam
-SweetberryJam
-DalgonaJam
-PomegranateJam
-PopberryJam
+JellybeanJam: 젤리빈-잼
+SweetberryJam: 스윗젤리-잼
+DalgonaJam: 달고나-잼
+PomegranateJam: 석류-잼
+PopberryJam: 톡톡베리-잼
 
-PineconeDoll
-AcornLamp
-CuckooClock
-DreamCatcher
+PineconeDoll: 솔방울새-인형
+AcornLamp: 도토리-램프
+CuckooClock: 뻐꾹뻐꾹-시계
+DreamCatcher: 백조깃털-드림캐쳐
 
-RyeBread
-Jampie
-Focaccia
-Donut
-Castella
-Croissant
+RyeBread: 든든한-호밀빵
+Jampie: 달콤쫀득-잼파이
+Focaccia: 은행-포카치아
+Donut: 슈가코팅-도넛
+Castella: 폭신-카스테라
+Croissant: 골드리치-크로와상
 
-JellyStew
-JellyBugger
-CandyCreamPasta
-FluffyOmurice
-PizzaJelly
-JellybeanMeal
+JellyStew: 따끈따끈-젤리스튜
+JellyBugger: 곰젤리-버거
+CandyCreamPasta: 캔디크림-파스타
+FluffyOmurice: 폭신폭신-오므라이스
+PizzaJelly: 콤비네이션-피자젤리
+JellybeanMeal: 고급스러운-젤리빈-정식
 
-Flowerpot
-GlassPlate
-Marble
-DessertBowl
+Flowerpot: 비스킷-화분
+GlassPlate: 반짝반짝-유리판
+Marble: 반짝이는-색동구슬
+DessertBowl: 무지갯빛-디저트-보울
 
-CandyFlower
-HappyFlower
-CandyBouquet
-FlowerBasket
-GlassBouquet
-YogurtWreath
+CandyFlower: 캔디-꽃
+HappyFlower: 행복한-꽃화분
+CandyBouquet: 캔디꽃다발
+FlowerBasket: 롤리팝-꽃바구니
+GlassBouquet: 유리꽃-부케
+YogurtWreath: 찬란한-요거트-화환
 
-Cream
-Butter
-HandyCheese
+Cream: 크림
+Butter: 버터
+HandyCheese: 수제-치즈
 
-JellybeanLatte
-BubbleTea
-SweetberryAde
+JellybeanLatte: 젤리빈-라떼
+BubbleTea: 몽글몽글-버블티
+SweetberryAde: 스윗베리-에이드
 
-CandyCushion
-BearCottonDoll
-DragonDoll
+CandyCushion: 구름사탕-쿠션
+BearCottonDoll: 곰젤리-솜인형
+DragonDoll: 용과-드레곤-솜인형
 
-CreamRootBeer
-RedberryJuice
-Wildbottle
+CreamRootBeer: 크림-루트비어
+RedberryJuice: 레드베리-주스
+Wildbottle: 빈티지-와일드-보틀
 
-Muffin
-StrawberryCake
-ChiffonCake
+Muffin: 으스스-머핀
+StrawberryCake: 생딸기-케이크
+ChiffonCake: 파티파티-쉬폰케이크
 
-GlazedRing
-Brooch
-JellyCrown
+GlazedRing: 글레이즈드-링
+Brooch: 루비베리-브로치
+JellyCrown: 로얄-곰젤리-크라운

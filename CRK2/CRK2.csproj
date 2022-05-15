@@ -9,7 +9,11 @@
   <ItemGroup>
     <Compile Include="MainClass.cs" />
     <Compile Include="source/*.cs" />
+    <Compile Include="source/Codec/*.cs" />
+    <Compile Include="source/Cryptography/*.cs" />
     <Compile Include="source/DataStructures/*.cs" />
+    <Compile Include="source/Exceptions/*.cs" />
+    <Compile Include="source/IO/*.cs" />
     <Compile Include="source/Serializers/*.cs" />
     <Compile Include="source/Utilities/*.cs" />
   </ItemGroup>

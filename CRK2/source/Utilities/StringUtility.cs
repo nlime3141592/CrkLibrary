@@ -1,9 +1,37 @@
 using System.Collections.Generic;
+using System.Text;
 
 namespace CRK2
 {
     public static class StringUtility
     {
+        public static string RemoveWhiteSpace(string str)
+        {
+            str = str.Replace(" ", "").Replace("\t", "");
+
+            return str;
+        }
+
+        public static bool Contains(string str, params char[] delimiters)
+        {
+            if(delimiters == null || delimiters.Length == 0)
+                return false;
+
+            for(int i = 0; i < delimiters.Length; i++)
+                if(str.Contains(delimiters[i]))
+                    return true;
+
+            return false;
+        }
+
+        public static StringBuilder RemoveWhiteSpace(StringBuilder contents)
+        {
+            contents.Replace(" ", "");
+            contents.Replace("\t", "");
+
+            return contents;
+        }
+
         private static int[] GetSymmetricArray(string value)
         {
             int n;

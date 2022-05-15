@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 
 namespace CRK2
@@ -16,7 +15,7 @@ namespace CRK2
 
             contents = new StringBuilder();
 
-            contents.AppendFormat("Item: {0}\n", CrkManager.itemTypeTable[itemType]);
+            contents.AppendFormat("Item: {0}\n", CrkManager.itemTypeConverter.GetItemTypeString(itemType));
             contents.AppendFormat("  Recipes:\n");
 
             n = recipes.Length;
